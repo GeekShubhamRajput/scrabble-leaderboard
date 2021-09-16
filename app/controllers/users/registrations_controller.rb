@@ -1,6 +1,13 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_permitted_parameters
 
+  
+  protected
+
+    def update_resource(resource, params)
+      resource.update_without_password(params)
+    end
+
   private
 
     def configure_permitted_parameters

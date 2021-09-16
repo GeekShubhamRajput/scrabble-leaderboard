@@ -2,58 +2,25 @@
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "users/shared/error_messages", resource: resource %>
-  <div class="row">
+  <div class="row mb-3">
     <div class="col-lg-6">
-      <div class="form-group">
-        <%= f.label :first_name %><br />
-        <%= f.text_field :first_name, class: 'form-control' %>
-      </div>
-    </div>
-    <div class="col-lg-6">
-      <div class="form-group">
-        <%= f.label :last_name %><br />
-        <%= f.text_field :last_name, class: 'form-control' %>
-      </div>
+      <%= f.label :first_name, class: "form-label" %>
+      <%= f.text_field :first_name, placeholder: "Enter your first name", autofocus: true, required: true, class: 'form-control' %>
     </div>
   </div>
 
-  <div class="row">
+  <div class="row mb-3">
     <div class="col-lg-6">
-      <div class="form-group">
-        <%= f.label :email %><br />
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control', disabled: true %>
-      </div>
-    </div>
-    <div class="col-lg-6">
-      <div class="form-group">
-        <%= f.label :locale, t('registrations.language') %>
-        <%= f.select :locale, options_for_select([['English', 'en'], ['German', 'de']], f.object.locale), {}, class: "form-control" %>
-      </div>
+      <%= f.label :last_name, class: "form-label" %>
+      <%= f.text_field :last_name, placeholder: "Enter your last name", autofocus: true, required: true, class: 'form-control' %>
     </div>
   </div>
 
-  <div class="row">
+  <div class="row mb-3">
     <div class="col-lg-6">
-      <div class="form-group">
-        <%= f.label :user_timezone, t('registrations.timezone') %>
-        <%= f.time_zone_select :user_timezone, [], { prompt: '-- Select one--'}, {class: "form-control" }  %>
-      </div>
+      <%= f.label :mobile_number, class: "form-label" %>
+      <%= f.text_field :mobile_number, placeholder: "Enter your mobile number", autofocus: true, class: 'form-control' %>
     </div>
-    <div class="col-lg-6">
-      <div class="form-group">
-        <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-        <%= f.password_field :password, autocomplete: "new-password", class: 'form-control' %>
-      </div>
-    </div>
-  </div>
-  
-  <div class="row">
-    <div class="col-lg-6">
-      <div class="form-group">
-        <%= f.label :password_confirmation %><br />
-        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control' %>
-      </div>
-    </div> 
   </div>
 
   <div class="row">
@@ -64,52 +31,3 @@
     </div>
   </div>
 <% end %>
-
-Organization Roles:
-<table class="table table-striped table-bordered">
-  <thead>
-    <tr>
-      <th>Organization Name</th>
-      <th>Role</th>
-    </tr>
-  </thead>
-  <tbody class="todo-list" data-target="groups.list">
-    <% current_user.membership_settings.each do |org| %>
-      <tr>
-        <td>
-          <%= org.organization.name %>
-        </td>
-        <td>
-          <%= org.role %>
-        </td>
-      </tr>
-    <% end %>
-    </tbody>
-  </table>
-
-Groups Roles:
-<table class="table table-striped table-bordered">
-  <thead>
-    <tr>
-      <th>Group Name</th>
-      <th>Organization Name</th>
-      <th>Role</th>
-    </tr>
-  </thead>
-  <tbody class="todo-list" data-target="groups.list">
-    <% current_user.group_users.each do |group| %>
-      <tr>
-        <td>
-          <%= group.group.name %>
-        </td>
-        <td>
-          <%= group.organization&.name %>
-        </td>
-        <td>
-          <%= group.member_type %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-   
