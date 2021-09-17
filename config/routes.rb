@@ -6,5 +6,9 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: "users/registrations" }
 
   resources :clubs
+  resources :games
   
+  get '/members/:id', to: 'members#show', as: 'member'
+
+
 end

@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<h2><%= @club.name %></h2>
+
+<div class="row">
+  <div class="col-4">
+    <ul class="list-group">
+      <li class="list-group-item active" aria-current="true">Members</li>
+      <% if @club.members.blank? %>
+        <li class="list-group-item">No member found</li>
+      <% else %>
+        <% @club.members.each_with_index do |member, index| %>
+          <li class="list-group-item"><%= index +1 %>. <%= member.full_name %> </li>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+</div>
+<br/>
+<%= link_to 'Edit', edit_club_path(@club), class: 'btn btn-primary' %> |
+<%= link_to 'Back', clubs_path %>

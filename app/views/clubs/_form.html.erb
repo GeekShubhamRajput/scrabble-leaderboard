@@ -1,0 +1,38 @@
+<%= form_with(model: club) do |form| %>
+  <% if club.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(club.errors.count, "error") %> prohibited this club from being saved:</h2>
+
+      <ul>
+        <% club.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row mb-3">
+    <div class="col-lg-6">
+      <%= form.label :name, class: "form-label" %>
+      <%= form.text_field :name, placeholder: "Enter name", autofocus: true, required: true, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-lg-6">
+      <%= form.label :city, class: "form-label" %>
+      <%= form.text_field :city, placeholder: "Enter city", autofocus: true, required: true, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-lg-6">
+      <%= form.label :country, class: "form-label" %>
+      <%= form.text_field :country, placeholder: "Enter country", autofocus: true, required: true, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'Submit', class: "btn btn-primary" %>
+  </div>
+<% end %>

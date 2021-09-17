@@ -25,6 +25,13 @@
 
   <div class="row mb-3">
     <div class="col-lg-6">
+      <%= f.label :club_id, 'Club', class: "form-label" %>
+      <%= f.select :club_id, options_for_select(clubs_collection), {}, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-lg-6">
       <%= f.label :password, class: "form-label" %>
       <% if @minimum_password_length %>
       <em>(<%= @minimum_password_length %> characters minimum)</em>

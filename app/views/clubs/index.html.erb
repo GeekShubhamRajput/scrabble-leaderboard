@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h2>Clubs</h2>
+<br>
+
+<div class="row">
+  <div class="col-8">
+    <div class="table-responsive">
+      <table class= "table table-hover">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>City</th>
+            <th>Country</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% if @clubs.blank? %>
+            <tr>
+              <td colspan="8">No Club found</td>
+            </tr>
+          <% else %>
+            <% @clubs.each do |club| %>
+              <tr>
+                <td><%= link_to club.name, club %></td>
+                <td><%= club.city %></td>
+                <td><%= club.country %></td>
+              </tr>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<br>
+
+<%= link_to 'New Club', new_club_path, class: 'btn btn-primary' %>

@@ -36,7 +36,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.1]
       t.string :last_name
       t.string :mobile_number
 
-
+      t.integer :club_id
 
       t.timestamps null: false
     end
